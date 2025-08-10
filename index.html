@@ -48,12 +48,14 @@
       flex-wrap:wrap;
     }
     .profile img {
-      width:190px; height:190px; object-fit:cover;
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
       border-radius: 50%;
-      border:5px solid rgba(255,255,255,0.15);
-      box-shadow:0 8px 30px rgba(16,24,40,0.4);
-      background:rgba(255,255,255,0.05);
-     
+      border: 5px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(16, 24, 40, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+      display: block;
     }
     .profile-info {text-align:center;}
     .profile-info h1{font-size:26px; margin-bottom:6px; letter-spacing:0.2px;}
@@ -120,9 +122,9 @@
 
     /* Responsive tweaks */
     @media (max-width:720px){
-      .profile img {width:130px;height:130px}
-      .btn{padding:8px 12px}
-      section.card{padding:16px;margin:16px}
+      .profile img {width:130px;height:130px;}
+      .btn{padding:8px 12px;}
+      section.card{padding:16px;margin:16px;}
     }
   </style>
 </head>
@@ -132,7 +134,7 @@
   <header class="hero">
     <div class="container">
       <div class="profile">
-        <img src="19.png" alt="profile" style="width: max; height: max;" >
+        <img src="19.png" alt="profile">
         <div class="profile-info">
           <h1>Khairy Ibrahem Mohamed</h1>
           <h2>Senior System Administrator</h2>
@@ -144,7 +146,6 @@
             <a class="btn" href="tel:+201155521009"><i class="fa-solid fa-phone"></i> +20 115 552 1009</a>
             <a class="btn small" href="tel:+201020241416"><i class="fa-solid fa-phone"></i> +20 102 024 1416</a>
             <a class="btn" href="https://www.linkedin.com/in/khairy-ibrahem" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a class="btn" href="https://github.com/Eng-khairy" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
           </div>
         </div>
       </div>
@@ -302,37 +303,4 @@
   </main>
 
   <!-- Footer -->
-  <div class="container" style="padding:0 20px 36px;">
-    <footer class="site-footer">
-      <div style="font-weight:600">Khairy Ibrahem Mohamed</div>
-      <div style="opacity:0.9; margin-top:6px; font-size:13px">
-        © <span id="year"></span> — All Rights Reserved • Cairo, Egypt
-      </div>
-    </footer>
-  </div>
-
-  <!-- Floating WhatsApp button -->
-  <a class="whatsapp" href="https://wa.me/201155521009" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <script>
-    // Insert current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Minor keyboard accessibility for WhatsApp button (Enter to open)
-    document.querySelectorAll('.whatsapp').forEach(el=>{
-      el.addEventListener('keydown', function(e){
-        if(e.key === 'Enter') el.click();
-      });
-    });
-  </script>
-
-</body>
-</html>
-
-
-
-
-
-
+  <div class="container
