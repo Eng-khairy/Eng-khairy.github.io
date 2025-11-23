@@ -1,11 +1,336 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Khairy Ibrahem — Senior System Administrator</title>
 
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ===== Reset & Base ===== */
+    * {box-sizing: border-box; margin:0; padding:0;}
+    html,body{height:100%}
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background:#f0f2f7;
+      color:#222;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a {color:inherit;}
+
+    /* ===== Animated Gradient Header ===== */
+    .hero {
+      background: linear-gradient(120deg, #172b4d 0%, #2e3192 25%, #6a11cb 50%, #2575fc 75%, #00d2ff 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 12s ease infinite;
+      color: #fff;
+      padding: 48px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes gradientShift {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .container {max-width:1100px; margin:0 auto; padding:20px;}
+
+    .profile {
+      display:flex;
+      gap:24px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .profile img {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: #fff;
+  border: 5px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 30px rgba(16,24,40,0.4);
+  object-position: center 60%;
+}
+
+    }
+    .profile-info {text-align:center;}
+    .profile-info h1{font-size:26px; margin-bottom:6px; letter-spacing:0.2px;}
+    .profile-info h2{font-size:16px; margin-bottom:8px; font-weight:500; opacity:0.95;}
+    .profile-info p.location{opacity:0.9; font-size:14px;}
+
+    .contact-links {margin-top:14px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;}
+    .btn {
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 16px; border-radius:999px;
+      background: linear-gradient(90deg,#6a11cb,#2575fc);
+      color:#fff; text-decoration:none; font-weight:600;
+      box-shadow:0 6px 18px rgba(37,117,252,0.18);
+      transition:transform .18s ease,opacity .18s ease;
+      font-size:14px;
+    }
+    .btn:hover{transform:translateY(-3px); opacity:0.95}
+    .btn.secondary {background: rgba(255,255,255,0.12); color:#fff; box-shadow:none; font-weight:600;}
+    .btn.small {padding:8px 12px; font-size:13px;}
+
+    /* ===== Sections (cards) ===== */
+    section.card {
+      background:#fff; border-radius:14px; margin:28px auto;
+      max-width:1100px; padding:22px; box-shadow:0 10px 30px rgba(2,6,23,0.06);
+      transform:translateY(18px); opacity:0; animation:fadeUp .7s forwards;
+    }
+    section.card + section.card {animation-delay:.12s;}
+    @keyframes fadeUp {
+      to {transform:none; opacity:1;}
+    }
+
+    section.card h2 {
+      color:#172b4d; margin-bottom:10px; font-size:20px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .section-row {display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;}
+    .col {flex:1 1 320px; min-width:260px;}
+    .list {list-style:none; padding-left:0;}
+    .list li {padding:10px 0; border-bottom:1px solid #f4f6fb; font-size:15px;}
+    .muted {color:#556; font-size:14px;}
+
+    .job {margin-bottom:14px;}
+    .job h3 {font-size:16px; color:#2575fc; margin-bottom:6px;}
+    .job .meta {font-size:13px; color:#667; margin-bottom:8px;}
+    .job ul {padding-left:18px; margin-top:6px;}
+    .job ul li {list-style:disc; border-bottom:none; padding:6px 0; font-size:15px; color:#333;}
+
+    /* Certificates & Skills grid */
+    .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px;}
+    .chip {background:#f6f9ff; border-radius:10px; padding:10px 12px; font-weight:600; color:#234; border:1px solid #eef4ff;}
+
+    /* Floating WhatsApp button */
+    .whatsapp {
+      position:fixed; right:18px; bottom:18px; z-index:9999;
+      background:#25D366; color:#fff; width:56px; height:56px;border-radius:50%;
+      display:flex; align-items:center; justify-content:center; box-shadow:0 8px 30px rgba(37,211,102,0.24);
+      text-decoration:none; font-size:20px;
+    }
+    .whatsapp:hover {transform:translateY(-4px);}
+
+    /* Footer */
+    footer.site-footer {text-align:center; padding:18px; color:#fff; margin-top:18px;
+      background:linear-gradient(120deg,#2e3192,#2575fc); border-radius:8px; max-width:1100px; margin-left:auto;margin-right:auto;}
+
+    /* Responsive tweaks */
+    @media (max-width:720px){
+      .profile img {width:130px;height:130px;}
+      .btn{padding:8px 12px;}
+      section.card{padding:16px;margin:16px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="profile">
+        <img src="19.jpg" alt="profile" style="width:200px; height:200px; object-fit: cover; border-radius:50%;">
+        <div class="profile-info">
+          <h1>Khairy Ibrahem Mohamed</h1>
+          <h2>Senior System Administrator</h2>
+          <p class="location">Cairo, Egypt</p>
+
+        <div class="contact-links" aria-label="contact links">
+  <a class="btn" href="Khairy Resume.pdf" download><i class="fa-solid fa-file-pdf"></i> Download CV</a>
+  <a class="btn secondary" href="mailto:eng.khairyibrahem@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+  <a class="btn" href="tel:+201155521009"><i class="fa-solid fa-phone"></i> +20 115 552 1009</a>
+  <a class="btn small" href="tel:+201020241416"><i class="fa-solid fa-phone"></i> +20 102 024 1416</a>
+  <a class="btn" href="https://www.linkedin.com/in/khairy-ibrahem" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container" role="main" aria-labelledby="main-heading">
+
+    <!-- About -->
+    <section class="card" id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading"><i class="fa-solid fa-user"></i>&nbsp;About Me</h2>
+      <div class="section-row">
+        <div class="col">
+          <p class="muted">
+            Senior System Administrator with extensive experience in virtualization, cloud technologies, and ERP systems.
+            Expertise in VMware vSphere, ESXi 7.0/6.0, SCCM, Active Directory, Windows Server Upgrades, File Share Migration,
+            PowerShell, Microsoft Office 365, and Odoo ERP. Skilled in system configuration, troubleshooting, and user support
+            to enhance operational efficiency.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Education -->
+    <section class="card" id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading"><i class="fa-solid fa-graduation-cap"></i>&nbsp;Education</h2>
+      <div class="edu">
+        <h3>Bachelor of Management Information Technology</h3>
+        <p class="muted">Higher Technological Institute 10 of Ramadan, Cairo, Egypt — Graduated: 2016 | Grade: Good</p>
+      </div>
+    </section>
+    
+      <!-- Work Experience -->
+    <section class="card" id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading"><i class="fa-solid fa-briefcase"></i>&nbsp;Work Experience</h2>
+
+      <div class="job" aria-labelledby="job1">
+        <h3 id="job1">Senior System Administrator — Durrat Al Rimal (4 branches), Saudi Arabia</h3>
+        <div class="meta">Apr 2024 – Apr 2025</div>
+        <ul>
+          <li>Managed ERP modules (Inventory, Manufacturing, Sales, CRM, POS, HR), improving operational
+efficiency by 30%.</li>
+          <li>Delivered comprehensive user training and support, achieving a 95% system adoption rate within three
+months by facilitating smooth onboarding and improving user proficiency..</li>
+          <li>Streamlined data management processes by automating manual tasks, reducing workload by 40% and
+enhancing reporting accuracy and reliability.</li>
+          <li>Administered and optimized VMware ESXi virtualized environments to ensure high availability and
+optimal performance.</li>
+          <li>Managed network infrastructure including switches, firewalls, servers, and access points, maintaining
+99.9% uptime.</li>
+        </ul>
+      </div>
+
+      <div class="job" aria-labelledby="job2">
+        <h3 id="job2">Senior System Administrator — Abu Dhabi Media Corporation (Egypt Office), Cairo</h3>
+        <div class="meta">May 2019 – Apr 2024</div>
+        <ul>
+          <li>Designed, installed, and configured enterprise servers, network devices, and firewalls, ensuring 99.9%
+uptime for internal and client-facing systems..</li>
+          <li>Managed virtualization environments using VMware ESXi and Microsoft Hyper-V, improving resource
+utilization by 25%.</li>
+          <li>Implemented and maintained SQL server, FortiGate firewalls, and Kaspersky security, reducing
+security incidents by 40%.</li>
+          <li>Oversaw Qnap nas storage and Veeam backup and replication, achieving 100% data recovery success
+rate during tests.</li>
+          <li>Administered enterprise-scale windows server platforms, active directory, office 365, group policy
+objects, and DNS, improving its service delivery time by 35%.</li>
+           <li>Diagnosed and resolved complex Lan/wan and backbone infrastructure issues, reducing network
+downtime by 10%.</li>
+        </ul>
+      </div>
+
+      <div class="job" aria-labelledby="job3">
+        <h3 id="job3">System Administrator — Sera Factory, El-Obour City</h3>
+        <div class="meta">Mar 2018 – May 2019</div>
+        <ul>
+          <li>Installed and configured Sophos XG Firewall and Kaspersky Security, enhancing endpoint protection
+coverage by 50%.</li>
+          <li>Deployed and managed Windows Server 2008/2012/2016, DC, ADC, DNS, DHCP, File Share, WSUS,
+and Hyper-V, ensuring stable operations with 98% uptime.</li>
+          <li> Configured and maintained Backup Exec and ERP database backups, achieving zero data loss across all
+recovery simulations.</li>
+           <li>Monitored system performance and resolved hardware/software issues for servers, laptops, desktops, and
+printers, reducing IT support tickets by 20%.</li>
+        </ul>
+      </div>
+
+      <div class="job" aria-labelledby="job4">
+        <h3 id="job4">IT Specialist — Printex, Cairo</h3>
+        <div class="meta">Jan 2016 – Jan 2017</div>
+        <ul>
+          <li>Installed and configured Sophos XG firewall and Kaspersky security, enhancing endpoint protection
+coverage by 50%.</li>
+          <li>managed windows server 2012 ensuring stable operations with 98% uptime.</li>
+          <li>Monitored system performance and resolved hardware/software issues for servers, laptops, desktops,
+and printers, reducing it support tickets by 20%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="card" id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading"><i class="fa-solid fa-laptop-code"></i>&nbsp;Technical Skills</h2>
+      <div class="grid">
+        <div class="chip">Virtualization & Cloud: VMware vSphere, ESXi, Hyper-V, AWS, Azure</div>
+        <div class="chip">Networking & Security: CCNA, FortiGate Firewalls, Sophos XG, VPNs</div>
+        <div class="chip">ERP Systems: Odoo (Inventory, CRM, POS, Sales, Manufacturing, HR)</div>
+        <div class="chip">System Administration: Windows Server, Active Directory, SCCM, Office 365, PowerShell</div>
+        <div class="chip">Storage & Backup: QNAP NAS, Veeam Backup & Replication, Backup Exec</div>
+        <div class="chip">Development & DevOps: SQL Server, Git, Docker, Kubernetes (In Progress)</div>
+      </div>
+    </section>
+
+
+    <!-- Projects -->
+    <section class="card" id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading"><i class="fa-solid fa-diagram-project"></i>&nbsp;Projects</h2>
+      <ul>
+        <li>Creating the infrastructure for two branches of networks, servers, and firewall for Sera Company.</li>
+        <li>Installation of domain, file server, ERP system for Sera Company.</li>
+        <li>Created infrastructure for Abu Dhabi Media Corporation Cairo office (2022).</li>
+        <li>Improving servers and implementing solutions (Fortinet firewall, QNAP storage, Veeam backup) to increase network efficiency.</li>
+        <li>Configuration and implementation of Odoo ERP system (2024) for Durrat Al Rimal company.</li>
+      </ul>
+    </section>
+
+    <!-- Internships -->
+    <section class="card" id="internships" aria-labelledby="internships-heading">
+      <h2 id="internships-heading"><i class="fa-solid fa-briefcase-clock"></i>&nbsp;Internships</h2>
+      <div class="internship">
+        <h3>Udacity Nanodegree — Advanced Cloud DevOps</h3>
+        <div class="meta">Oct 2022 – Jan 2023</div>
+        <ul>
+          <li>Cloud Fundamentals</li>
+          <li>Deploy Infrastructure as Code (IAC)</li>
+          <li>Build CI/CD Pipelines, Monitoring and Logging</li>
+        </ul>
+      </div>
+
+      <div class="internship">
+        <h3>AWS re/Start Program</h3>
+        <div class="meta">May 2022 – Sep 2022</div>
+        <ul>
+          <li>Built fundamental IT skills including Linux, scripting (Python & Shell).</li>
+          <li>Applied AWS services: EC2, S3, IAM, VPC, Lambda, CloudFormation, RDS, Route 53.</li>
+          <li>Configured, monitored, and supported AWS core services.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Interpersonal Skills -->
+    <section class="card" id="skills-soft" aria-labelledby="skills-soft-heading">
+      <h2 id="skills-soft-heading"><i class="fa-solid fa-handshake"></i>&nbsp;Interpersonal Skills</h2>
+      <ul>
+        <li>Team Leadership</li>
+        <li>Time Management</li>
+        <li>Creative and Problem Solving</li>
+        <li>Collaboration</li>
+        <li>Adaptability</li>
+      </ul>
+    </section>
+
+        <!-- Certificates -->
+    <section class="card" id="certificates" aria-labelledby="certificates-heading">
+      <h2 id="certificates-heading"><i class="fa-solid fa-certificate"></i>&nbsp;Certificates</h2>
+      <ul class="list">
+        <li class="list-item">AWS re/Start Program</li>
+        <li class="list-item">Microsoft Certified Azure Fundamentals (AZ-900)</li>
+        <li class="list-item">Advanced Cloud DevOps — Udacity Nanodegree Program</li>
+        <li class="list-item">Oracle Cloud Infrastructure 2025 Certified Foundations Associate</li>
+      </ul>
+    </section>
+
+
+
+
+
+
+    
 
   <style>
     * {box-sizing: border-box; margin:0; padding:0;}
