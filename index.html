@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Khairy Ibrahem — Senior System Administrator</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    * {box-sizing: border-box; margin:0; padding:0;}
+    html,body{height:100%}
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background:#f0f2f7;
+      color:#222;
+      line-height:1.6;
+    }
+    .hero {
+      background: linear-gradient(120deg, #172b4d, #2e3192, #6a11cb, #2575fc, #00d2ff);
+      background-size: 200% 200%;
+      animation: gradientShift 12s ease infinite;
+      color: #fff; padding: 48px 20px; text-align: center;
+    }
+    @keyframes gradientShift {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .container {max-width:1100px; margin:0 auto; padding:20px;}
+    .profile {display:flex; gap:24px; align-items:center; justify-content:center; flex-wrap:wrap;}
+    .profile img {width:200px; height:200px; border-radius:50%; object-fit:cover; border:5px solid rgba(255,255,255,0.15);}
+
+    .cert-img {width:100%; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); cursor:pointer;}
+
+    #imgPopup {display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:99999;}
+    #imgPopup img {max-width:95%; max-height:95%; border-radius:12px;}
+  </style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="profile">
+      <img src="19.jpg" alt="profile">
+      <div class="profile-info">
+        <h1>Khairy Ibrahem Mohamed</h1>
+        <h2>Senior System Administrator</h2>
+        <p>Cairo, Egypt</p>
+        <a class="btn" href="Khairy Resume.pdf" download>Download CV</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="card">
+  <h2>Certificates</h2>
+  <ul>
+    <li>AWS re/Start Program – Cloud Fundamentals</li>
+    <li>Microsoft Certified Azure Fundamentals (AZ-900)</li>
+    <li>Udacity Nanodegree – Advanced Cloud DevOps</li>
+    <li>Oracle Cloud Infrastructure 2025 Certified Foundations Associate</li>
+  </ul>
+</section>
+
+<div class="grid" style="margin-top:15px; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
+
+  <div>
+    <img src="cert1.jpg" class="cert-img" onclick="openPopup(this.src)">
+    <p>Microsoft Certified: Azure Fundamentals (AZ-900)</p>
+  </div>
+
+  <div>
+    <img src="cert2.jpeg" class="cert-img" onclick="openPopup(this.src)">
+    <p>Udacity Nanodegree – Advanced Cloud DevOps</p>
+  </div>
+
+  <div>
+    <img src="cert3.png" class="cert-img" onclick="openPopup(this.src)">
+    <p>AWS Academy – Cloud Foundations</p>
+  </div>
+
+  <div>
+    <img src="cert4.png" class="cert-img" onclick="openPopup(this.src)">
+    <p>Oracle Cloud Infrastructure 2025 Foundations Associate</p>
+  </div>
+
+</div>
+
+</main>
+
+<div id="imgPopup" onclick="closePopup()">
+  <img id="popupImg" src="">
+</div>
+
+<script>
+function openPopup(src) {
+  document.getElementById("popupImg").src = src;
+  document.getElementById("imgPopup").style.display = "flex";
+}
+function closePopup() {
+  document.getElementById("imgPopup").style.display = "none";
+  document.getElementById("popupImg").src = "";
+}
+</script>
+
+</body>
+</html>
